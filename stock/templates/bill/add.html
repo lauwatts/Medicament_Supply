@@ -1,0 +1,15 @@
+{% extends "layout/_body.html" %}
+{% block title %}
+  Añadir Client
+{% endblock %}
+{% block content %}
+<div class="row">
+  <form  method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" class="button">Guardar</button>
+  </form>
+
+</div>
+
+{% endblock %}

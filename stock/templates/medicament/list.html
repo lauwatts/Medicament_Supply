@@ -1,0 +1,27 @@
+{% extends "layout/_body.html" %}
+{% block title %}
+  List Client
+{% endblock %}
+{% block content %}
+<br>
+<div class="row">
+  <a href={% url 'stock:add_medicament' %} class="button">Agregar Medicamento</a>
+  <ul class="accordion" data-accordion>
+    {% for medicament in medicaments %}
+    <li class="accordion-item" data-accordion-item>
+      <a href="#" class="accordion-title">{{medicament.name}}</a>
+      <div class="accordion-content" data-tab-content>
+        Nombre: {{medicament.name}} | Cantidad: {{medicament.amount}} | Precio: {{medicament.price}}
+        <div class="button-group">
+          <a href={% url 'stock:edit_medicament' medicament.id %} class="success button">Edit</a>
+          <a href={% url 'stock:remove_medicament' medicament.id %} class="alert button">Delete</a>
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+
+
+</ul>
+</div>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "layout/_body.html" %}
+{% block title %}
+  List Client
+{% endblock %}
+{% block content %}
+<br>
+<div class="row">
+  <a href={% url 'client:add' %} class="button">Agregar Cliente</a>
+  <ul class="accordion" data-accordion>
+    {% for client in clients %}
+    <li class="accordion-item" data-accordion-item>
+      <a href="#" class="accordion-title">{{client.first_name}} {{client.last_name}}</a>
+      <div class="accordion-content" data-tab-content>
+        Nombre: {{client.first_name}} | Apellido: {{client.last_name}} | Edad: {{client.age}}
+        <div class="button-group">
+          <a href={% url 'client:edit' client.id %} class="success button">Edit</a>
+          <a href={% url 'client:remove' client.id %} class="alert button">Delete</a>
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+
+
+</ul>
+</div>
+
+{% endblock %}
